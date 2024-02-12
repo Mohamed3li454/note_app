@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:note_app/widgets/custom_appbar.dart';
 
 // ignore: camel_case_types
-class note_screen_body extends StatelessWidget {
-  const note_screen_body({super.key});
+class note_view_body extends StatelessWidget {
+  const note_view_body({super.key});
 
   @override
   Widget build(BuildContext context) {
