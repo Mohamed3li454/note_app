@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/widgets/custom_add_note.dart';
 import 'package:note_app/widgets/note_view_body.dart';
 
 // ignore: camel_case_types
@@ -7,8 +8,24 @@ class notes_view extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: note_view_body(),
+    return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 16, right: 16),
+        child: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              context: context,
+              builder: (context) {
+                return const CustomAddNotes();
+              },
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
+      ),
+      body: const note_view_body(),
     );
   }
 }
