@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class Custom_TextFiald extends StatelessWidget {
-  const Custom_TextFiald({super.key, required this.hint, this.maxlints = 1});
+  const Custom_TextFiald(
+      {super.key, required this.hint, this.maxlints = 1, this.onsaved});
   final String hint;
   final int maxlints;
+  final void Function(String?)? onsaved;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return "Field is required";
+        } else {
+          return null;
+        }
+      },
       maxLines: maxlints,
-      onSubmitted: (value) {},
+      onSaved: onsaved,
       decoration: InputDecoration(
         enabledBorder: buildBorder(),
         hintText: hint,

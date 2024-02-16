@@ -11,7 +11,7 @@ class custom_node_card extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => EditNoteView(),
+            builder: (context) => const EditNoteView(),
           ),
         );
       },
