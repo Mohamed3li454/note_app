@@ -4,9 +4,11 @@ import 'package:note_app/widgets/custom_icon.dart';
 
 // ignore: camel_case_types
 class custom_appbar extends StatelessWidget {
-  const custom_appbar({super.key, required this.title, required this.icon});
+  const custom_appbar(
+      {super.key, required this.title, this.icon, this.onpressed});
   final String title;
-  final IconData icon;
+  final IconData? icon;
+  final void Function()? onpressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,6 +21,7 @@ class custom_appbar extends StatelessWidget {
         ),
         const Spacer(),
         CustomIcon(
+          onpressed: onpressed,
           icon: icon,
         )
       ],

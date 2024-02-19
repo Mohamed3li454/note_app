@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class CustomIcon extends StatelessWidget {
-  const CustomIcon({super.key, required this.icon});
-  final IconData icon;
+  const CustomIcon({super.key, this.icon, this.onpressed});
+  final IconData? icon;
+  final void Function()? onpressed;
   @override
   Widget build(BuildContext context) {
     return Container(
       // ignore: sort_child_properties_last
       child: Center(
-        child: Icon(icon),
+        child: IconButton(
+          onPressed: onpressed,
+          icon: Icon(icon),
+        ),
       ),
       height: 46,
       width: 46,
