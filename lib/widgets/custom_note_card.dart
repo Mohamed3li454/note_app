@@ -40,8 +40,31 @@ class custom_node_card extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    final result = await showDialog<bool>(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Are you sure?'),
+                        content: const Text(
+                            'This action will permanently delete this data'),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, false),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, true),
+                            child: const Text('Delete'),
+                          ),
+                        ],
+                      ),
+                    );
+
+                    if (result == null || !result) {
+                      return;
+                    }
                     notes.delete();
+                    // ignore: use_build_context_synchronously
                     BlocProvider.of<NotesCubit>(context).ReadNotes();
                   },
                   icon: const Icon(
@@ -51,7 +74,7 @@ class custom_node_card extends StatelessWidget {
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 70),
+              padding: const EdgeInsets.only(right: 50),
               child: Text(
                 notes.date,
                 style: TextStyle(
@@ -61,7 +84,7 @@ class custom_node_card extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Color(notes.color),
           borderRadius: BorderRadius.circular(16),
         ),
       ),

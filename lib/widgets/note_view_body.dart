@@ -29,7 +29,7 @@ class _note_view_bodyState extends State<note_view_body> {
           SizedBox(
             height: 60,
           ),
-          custom_appbar(title: "Notes"),
+          custom_appbar(title: "Notes", icon: Icons.mode_edit_outlined),
           Expanded(
             child: NotesListView(),
           )

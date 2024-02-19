@@ -22,6 +22,7 @@ class CustomAddNotes extends StatelessWidget {
             if (state is AddNoteSuccess) {
               BlocProvider.of<NotesCubit>(context).ReadNotes();
               Navigator.pop(context);
+              AddNoteSuccessSnackbar.show(context);
             }
           },
           builder: (context, state) {
@@ -33,6 +34,24 @@ class CustomAddNotes extends StatelessWidget {
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class AddNoteSuccessSnackbar {
+  static void show(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Row(
+          children: [
+            Icon(Icons.check_circle, color: Colors.green),
+            SizedBox(width: 8),
+            Text('Note added successfully'),
+          ],
+        ),
+        backgroundColor: Colors.black87,
+        duration: Duration(seconds: 2),
       ),
     );
   }

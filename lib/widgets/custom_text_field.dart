@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// ignore: camel_case_types
+// ignore: camel_case_types, must_be_immutable
 class Custom_TextFiald extends StatefulWidget {
   Custom_TextFiald(
       {super.key,
@@ -19,6 +19,7 @@ class Custom_TextFiald extends StatefulWidget {
   State<Custom_TextFiald> createState() => _Custom_TextFialdState();
 }
 
+// ignore: camel_case_types
 class _Custom_TextFialdState extends State<Custom_TextFiald> {
   // ignore: prefer_final_fields
   late TextEditingController _textController;
